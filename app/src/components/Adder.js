@@ -19,7 +19,7 @@ export default class App extends Component {
   render() {
     return (
         <form onSubmit={this.handleOnSubmit}>
-      <div><input value={this.state.value} onChange={this.handleOnChange} type="text"/></div>
+      <div><input name='writer' value={this.state.value} onChange={this.handleOnChange} type="text"/></div>
       <div><input value='Submit' type="submit"/></div>
       </form>
       

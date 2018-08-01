@@ -6,7 +6,7 @@ export default class App extends Component {
         items.forEach(element => {
             arr.push(<li key={arr.length}>{element}</li>)
         });
-            return arr; 
+        return arr; 
     }
     render() {
         let list = this.createList(this.props.list)
