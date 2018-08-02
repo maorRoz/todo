@@ -24,7 +24,7 @@ class App extends Component {
       <div>
         <TodoListView list={this.state.items}/>
         <Adder addItemRequest={this.addItem}/>
-        <button onClick={this.removeList} >Clean List</button>
+        <button onClick={this.removeList} data-cy='clean'>Clean List</button>
       </div>
     );
   }

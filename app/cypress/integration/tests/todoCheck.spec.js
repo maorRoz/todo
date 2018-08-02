@@ -1,12 +1,12 @@
 function addTask(taskName){
-    cy.get('input[name=writer]')
+    cy.get('[name=writer]')
     .type(taskName)
-    cy.get('input[type=submit]')
+    cy.get('[type=submit]')
     .click()
 }
 
 function cleanTaskList(){
-    cy.get('button')
+    cy.get('[data-cy=clean]')
     .click()
 }
 
@@ -14,17 +14,18 @@ function cleanTaskList(){
 
 describe('Simple Test Suite',() => {
     before(() => {
+        cy.visit('/')
         console.log('this is before message!');
     })
 
-    beforeEach(() => {
+    beforeEach(() =>
+    { 
+        cy.get('button')
+        .click()
         console.log('this is before each message!')
     })
 
     afterEach(() => {
-        cy.get('button')
-        .click()
-
         console.log('this is after each message!')
     })
 
@@ -34,7 +35,6 @@ describe('Simple Test Suite',() => {
 
     context('Simple Test 1', () => {
         it('add/delete things',() => {
-            cy.visit('/')
 
            //assert that the list is empty
             cy.get('li').should('have.length',0)
@@ -49,12 +49,12 @@ describe('Simple Test Suite',() => {
             cy.get('li').should('have.length',1)
     
             //enter 'capitolis' into the list
-            cy.get('input[name=writer]')
+            cy.get('[name=writer]')
             .type('capitolis')
-            cy.get('input[type=submit]')
+            cy.get('[type=submit]')
             .click()
 
-            //assert that there is 2 items in the list now
+            //assert that there are 2 items in the list now
             cy.get('li').should('have.length',2)
     
             //empty list
@@ -64,6 +64,10 @@ describe('Simple Test Suite',() => {
             //assert that the list is empty once again
             cy.get('li').should('have.length',0)
         });
+
+        it('doning nothing', () =>{
+            console.log()
+        })
 
     })
 
@@ -84,8 +88,6 @@ describe('Simple Test Suite',() => {
 
     context('Simple Test 3' , () => {
         it('add/delete things with functions',function() {
-            cy.visit('/')
-
             //assert that the list is empty
              cy.get('li').should('have.length',0)
  
